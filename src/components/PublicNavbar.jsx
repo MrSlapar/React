@@ -24,20 +24,6 @@ function PublicNavbar() {
             <div className="container-fluid">
                 <a style={{cursor:'pointer'}} className="navbar-brand" onClick={() => navigate(BASE)} >Blog app</a>
                 <form className="d-flex input-group w-auto">
-                    <button
-                        type="button"
-                        className="btn btn-primary me-3"
-                        style={{ height: 35.27, borderRadius: 5 }}
-                        onClick={() => navigate(BASE + 'login')}
-                        >Login
-                    </button>
-                    <button
-                        type="button"
-                        className="btn btn-primary me-3"
-                        style={{ height: 35.27, borderRadius: 5 }}
-                        onClick={() => navigate(BASE + 'register')}
-                        >Register
-                    </button>
                     <input
                         type="search"
                         className="form-control rounded"
@@ -50,6 +36,20 @@ function PublicNavbar() {
                     <span className="input-group-text border-0" id="search-addon">
                         <i className="fas fa-search"></i>
                     </span>
+                    <button
+                        type="button"
+                        className="btn btn-primary me-3"
+                        style={{ height: 35.27, borderRadius: 5, marginLeft: 25 }}
+                        onClick={() => navigate(BASE + 'login')}
+                        >Login
+                    </button>
+                    <button
+                        type="button"
+                        className="btn btn-primary me-3"
+                        style={{ height: 35.27, borderRadius: 5 }}
+                        onClick={() => navigate(BASE + 'register')}
+                        >Register
+                    </button>
                 </form>
             </div>
         </nav>
