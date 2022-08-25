@@ -22,7 +22,7 @@ function PublicNavbar() {
     return (
         <nav className="navbar navbar-light bg-light">
             <div className="container-fluid">
-                <a style={ cursor='pointer' } className="navbar-brand" onClick={() => navigate(BASE)} >Blog app</a>
+                <a style={{cursor:'pointer'}} className="navbar-brand" onClick={() => navigate(BASE)} >Blog app</a>
                 <form className="d-flex input-group w-auto">
                     <button
                         type="button"
