@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import './App.css'
 import Navbar from './components/navbar'
 import PublicNavbar from './components/PublicNavbar'
@@ -10,19 +11,26 @@ import Homepage from './pages/homepage'
 import Login from './pages/login'
 import Register from './pages/register'
 
+const Navigation = ({isAuth}) => {
+  if (!isAuth){
+    return <PublicNavbar/>
+  }
+  return <Navbar />
+}
 
 function App() {
+  const isAuth = useSelector(state => !!state.user.jwt)
   return (
     <BrowserRouter>
-    <PublicNavbar />
-    <div className="main-container">
-    <Routes>
-      <Route path={BASE} element={<Homepage />} />
-      <Route path={BASE + 'login'} element={<Login />} />
-      <Route path={BASE + 'register'} element={<Register />} />
-    </Routes>
-    </div>
-  </BrowserRouter>
+      <Navigation isAuth={isAuth}/>
+      <div className="main-container">
+        <Routes>
+          <Route path={BASE} element={<Homepage />} />
+          <Route path={BASE + 'login'} element={<Login />} />
+          <Route path={BASE + 'register'} element={<Register />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 
