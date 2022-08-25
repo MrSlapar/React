@@ -19,7 +19,7 @@ function Navbar() {
   return (
     <nav className="navbar navbar-light bg-light">
       <div className="container-fluid">
-        <a className="navbar-brand">Todo app</a>
+        <a className="navbar-brand">Blog app</a>
         <form className="d-flex input-group w-auto">
           <button
             type="button"
