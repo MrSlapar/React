@@ -4,10 +4,12 @@ import axios from 'axios';
 import { API_BASE } from "../../utils";
 import {
   HIDE_POST_MODAL,
-  TODO_ADD,
   ADD_POST_FAILURE,
   ADD_POST_SUCCESS,
   ADD_POST_START,
+  GET_POSTS_FAILURE,
+  GET_POSTS_START,
+  GET_POSTS_SUCCESS
 } from "../../actions/types";
 import "./modal.css";
 
@@ -53,7 +55,7 @@ function AddTodoModal() {
 
     const post = {
       title,
-      content: description, 
+      content: description,
       date: date.toJSON(),
       image
     }
@@ -70,6 +72,14 @@ function AddTodoModal() {
       .then(function (response) {
         dispatch({ type: ADD_POST_SUCCESS });
         dispatch({ type: HIDE_POST_MODAL });
+        dispatch({ type: GET_POSTS_START });
+        axios.get(API_BASE + "posts").then(function (response) {
+          dispatch({ type: GET_POSTS_SUCCESS, payload: response.data.posts });
+          console.log(response);
+        }).catch(error => {
+          alert('napaka');
+          dispatch({ type: GET_POSTS_FAILURE });
+        })
       })
       .catch(function (error) {
         alert('napaka');
