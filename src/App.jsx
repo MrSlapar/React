@@ -1,37 +1,42 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
-import './App.css'
-import Navbar from './components/navbar'
-import PublicNavbar from './components/PublicNavbar'
-import { BASE } from './utils'
-
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BASE } from "./utils";
 
-import Homepage from './pages/homepage'
-import Login from './pages/login'
-import Register from './pages/register'
+import Navbar from "./components/Navbar";
+import PublicNavbar from "./components/PublicNavbar";
+import AddTodoModal from "./components/modals/AddTodoModal";
 
-const Navigation = ({isAuth}) => {
-  if (!isAuth){
-    return <PublicNavbar/>
+import HomePage from "./pages/Homepage";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Profile from "./pages/Profile";
+
+const Navigation = ({ isAuth }) => {
+  if (!isAuth) {
+    return <PublicNavbar />;
   }
-  return <Navbar />
-}
+
+  return <Navbar />;
+};
 
 function App() {
-  const isAuth = useSelector(state => !!state.user.jwt)
+  const isAuth = useSelector((state) => !!state.user.jwt);
+
   return (
     <BrowserRouter>
-      <Navigation isAuth={isAuth}/>
+      <Navigation isAuth={isAuth} />
       <div className="main-container">
         <Routes>
-          <Route path={BASE} element={<Homepage />} />
-          <Route path={BASE + 'login'} element={<Login />} />
-          <Route path={BASE + 'register'} element={<Register />} />
+          <Route path={BASE} element={<HomePage />} />
+          <Route path={BASE + "login"} element={<Login />} />
+          <Route path={BASE + "register"} element={<Register />} />
+          <Route path={BASE + "profile"} element={<Profile />} />
         </Routes>
       </div>
+      <AddTodoModal />
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;

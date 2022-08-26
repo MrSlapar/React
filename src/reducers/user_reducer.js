@@ -16,17 +16,17 @@ const initialState = {
 export default function (state = initialState, action) {
     switch (action.type) {
         case USER_REGISTER_START:
-            return {...initialState, loading: true}
+            return { ...initialState, loading: true };
         case USER_REGISTER_SUCCESS:
-            return {...state, loading: false, jwt: action.payload.jwt, user: action.payload.user}
+            return { ...state, loading: false, jwt: action.payload.jwt, user: action.payload.user };
         case USER_LOGIN_START:
-            return {...initialState, loading: true}
+            return { ...initialState, loading: true };
         case USER_LOGIN_SUCCESS:
-            return {...state, loading: false, jwt: action.payload.jwt, user: action.payload.user}
+            return { ...state, loading: false, jwt: action.payload.jwt, user: action.payload.user };
         case USER_LOGIN_FAILURE:
-            return {... initialState}
+            return { ...initialState };
         case USER_LOGOUT:
-            return {... initialState}
+            return { ...initialState };
         default:
             return state;
     }

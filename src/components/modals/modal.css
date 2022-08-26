@@ -1,5 +1,4 @@
-.my-modal-container
-{
+.my-modal-container {
     position: fixed;
     top: 0;
     left: 0;
@@ -9,7 +8,6 @@
     z-index: 10;
 }
 
-.modal 
-{
+.modal {
     display: block;
 }
